@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             val username = extras.getString("Username")
         }
+
+         
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

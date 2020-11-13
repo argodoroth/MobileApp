@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun buttonClick(view: View){
         val intent = Intent(this, MainActivity::class.java)
-        val userField = findViewById<EditText>(R.id.userField);
+        val userField = findViewById<EditText>(R.id.userFieldData);
         intent.putExtra("Username", userField.text.toString())
         startActivity(intent)
     }
