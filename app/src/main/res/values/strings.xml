@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">NewsMate</string>
+    <string name="user_Text">User</string>
+    <string name="pass_text">Pass</string>
+    <string name="login">login</string>
+    <string name="savedArticles">saved articles</string>
+    <string name="addKeywords">add keywords</string>
+    <string name="darkTheme">dark theme</string>
+    <string name="localNews">local news only</string>
+    <string name="articles">articles</string>
+    <string name="personal">personal</string>
+    <string name="accessibility">accessibility</string>
+    <string name="acc">account</string>
+
+</resources>
