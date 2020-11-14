@@ -42,7 +42,7 @@ class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>) : Rec
 
 
         init {
-            itemView.setOnClickListener(this)
+            imgView.setOnClickListener(this)
         }
 
         //makes on click function for holder to react to
