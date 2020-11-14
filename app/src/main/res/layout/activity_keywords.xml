@@ -45,4 +45,10 @@
             android:text="@string/add"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <androidx.recyclerview.widget.RecyclerView class="androidx.recyclerview.widget.RecyclerView"
+        android:id="@+id/keyword_recycler_view"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
