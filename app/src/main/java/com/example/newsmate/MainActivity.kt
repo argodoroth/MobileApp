@@ -57,6 +57,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.action_search -> {
+                val intent = Intent(this, KeywordsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
