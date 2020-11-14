@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,7 +7,16 @@
     android:orientation="vertical"
     >
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
@@ -24,7 +33,7 @@
         android:layout_height="1dp"
         android:background="@color/colorMasked"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/addKeywords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,7 +69,7 @@
         android:layout_height="1dp"
         android:background="@color/colorMasked"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/savedArticles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,7 +90,7 @@
 
 
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
@@ -119,7 +128,7 @@
 
 
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
@@ -136,7 +145,7 @@
         android:layout_height="1dp"
         android:background="@color/colorMasked"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -154,4 +163,4 @@
         android:layout_height="1dp"
         android:background="@color/colorMasked"/>
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

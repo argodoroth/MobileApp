@@ -1,10 +1,12 @@
 package com.example.newsmate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Log.DEBUG
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val appBar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(appBar)
 
+        //get values from the previous login screen
         val extras = intent.extras
 
         if (extras == null){
@@ -38,13 +41,26 @@ class MainActivity : AppCompatActivity() {
             val username = extras.getString("Username")
         }
 
-         
+
     }
 
+    //Creates the option menu by inflating the layout
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate((R.menu.appbar_layout), menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item!!.itemId) {
+            R.id.action_settings -> {
+                val intent = Intent(this, MenuActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     //for moment used to make list of stub data, will later be used to populate with taken data
     private fun populateList(): ArrayList<ArticleModel>{

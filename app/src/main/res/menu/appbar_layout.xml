@@ -5,27 +5,27 @@
         android:id="@+id/action_search"
         android:icon="@drawable/search_icon"
         app:showAsAction="ifRoom"
-        android:title="AddKeyword" />
+        android:title="@string/addKeywords" />
 
     <item
         android:id="@+id/action_refresh"
         android:icon="@drawable/refresh_icon"
         app:showAsAction="ifRoom"
-        android:title="AddKeyword" />
+        android:title="@string/refresh" />
 
     <item
         android:id="@+id/action_account"
-        android:title="Account"
+        android:title="@string/acc"
         />
 
     <item
         android:id="@+id/action_logout"
-        android:title="Log Out"
+        android:title="@string/logout"
         />
 
     <item
         android:id="@+id/action_settings"
-        android:title="Settings"
+        android:title="@string/settings"
         />
 
 </menu>

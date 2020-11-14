@@ -11,5 +11,8 @@
     <string name="personal">personal</string>
     <string name="accessibility">accessibility</string>
     <string name="acc">account</string>
+    <string name="refresh">refresh</string>
+    <string name="settings">settings</string>
+    <string name="logout">log out</string>
 
 </resources>
