@@ -4,15 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_menu.*
 
 class KeywordsActivity : AppCompatActivity(){
+    val keywords = populateList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_keywords)
-
-        val keywords = populateList()
 
         //setting up the recycler view
         val recyclerView = findViewById<View>(R.id.keyword_recycler_view) as RecyclerView //bind to layout
@@ -30,6 +31,20 @@ class KeywordsActivity : AppCompatActivity(){
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate((R.menu.appbar_layout), menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    //Adds value to the list, then recreates the recycler view
+    fun addToList(view: View) {
+        val keyword = KeywordModel()
+        val textInput = findViewById<TextView>(R.id.keywordFieldData)
+        keyword.setKeywords(textInput.text.toString())
+        keywords.add(0,keyword)
+        textInput.text = ""
+        val recyclerView = findViewById<View>(R.id.keyword_recycler_view) as RecyclerView //bind to layout
+        val layoutManager = LinearLayoutManager(this) //Allows parent to manipulate views
+        recyclerView.layoutManager = layoutManager //binds layout manager to recycler
+        val keyAdapter = KeywordAdapter(keywords)
+        recyclerView.adapter = keyAdapter
     }
 
     //for moment used to make list of stub data, will later be used to populate with taken data
