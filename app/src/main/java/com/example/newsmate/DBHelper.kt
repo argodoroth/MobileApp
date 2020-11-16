@@ -12,6 +12,8 @@ class SqliteDatabase(context: Context) :
     override fun onCreate(db: SQLiteDatabase) {
         val CREATE_KEYWORDS_TABLE =
             "CREATE TABLE $TABLE_KEYWORDS($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_KEYWORD_TITLE TEXT)"
+        /*val CREATE_USERS_TABLE =
+            "CREATE TABLE $TABLE_USERS($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_KEYWORD_TITLE TEXT)"*/
         db.execSQL(CREATE_KEYWORDS_TABLE)//Will execute the sql to create a tasks db
     }
 
@@ -56,9 +58,15 @@ class SqliteDatabase(context: Context) :
         private const val DATABASE_VERSION = 5
         private const val DATABASE_NAME = "data"
         private const val TABLE_KEYWORDS = "keywords"
+        private const val TABLE_USERS = "users"
 
         private const val COLUMN_ID = "_id"
         private const val COLUMN_KEYWORD_TITLE = "keyword"
+
+        private const val USER_ID = "_id"
+        private const val COLUMN_USERNAME = "username"
+        private const val PASSWORD = "password"
+
     }
 
 }

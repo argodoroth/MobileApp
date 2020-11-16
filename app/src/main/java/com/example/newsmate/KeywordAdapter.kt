@@ -46,6 +46,7 @@ class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>, priva
             val keyword = keywordArray[position]
             keywordArray.removeAt(position)
             mDatabase.deleteKeyword(keyword.id)
+            notifyItemRemoved(position)
         }
     }
 
@@ -65,8 +66,16 @@ class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>, priva
 
         //makes on click function for holder to react to
         override fun onClick(v: View) {
-            val msg = keywordView.text
-            val snackbar = Snackbar.make(v, "$msg are the best!", Snackbar.LENGTH_LONG)
+            val word = keywordView.text
+            var position = adapterPosition
+            removeKeyword(position)
+            /*for ((iterator, i) in keywordArray.withIndex()){
+                if (i.keyword == word){
+                    removeKeyword(iterator - 1)
+                    //position = iterator
+                }
+            }*/
+            val snackbar = Snackbar.make(v, "$position is removed", Snackbar.LENGTH_LONG)
             snackbar.show()
         }
     }
