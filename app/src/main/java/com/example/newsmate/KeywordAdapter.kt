@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import org.w3c.dom.Text
 
-class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>) : RecyclerView.Adapter<KeywordAdapter.ViewHolder>() {
+class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>, private val mDatabase: SqliteDatabase) : RecyclerView.Adapter<KeywordAdapter.ViewHolder>() {
     //Inflate views using layout defined in article_layout.xml
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
@@ -31,6 +31,24 @@ class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>) : Rec
     override fun getItemCount(): Int {
         return keywordArray.size
     }
+
+    //Adds keyword to the database, then to array then notifies the view
+    fun addKeyword(word: String) {
+        mDatabase.addKeyword(word)
+        keywordArray.clear()
+        keywordArray.addAll(mDatabase.listKeywords())
+        notifyDataSetChanged()
+    }
+
+    //Removes from array, then checks for the models id and removes from db
+    fun removeKeyword(position: Int) {
+        if (position < keywordArray.size){
+            val keyword = keywordArray[position]
+            keywordArray.removeAt(position)
+            mDatabase.deleteKeyword(keyword.id)
+        }
+    }
+
 
     /*
     Parent class that handles layout inflation and child view use

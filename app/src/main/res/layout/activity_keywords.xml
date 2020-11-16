@@ -44,7 +44,7 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/colorPrimaryDark"
             android:text="@string/add"
-            android:onClick="addToList"/>
+            />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView class="androidx.recyclerview.widget.RecyclerView"

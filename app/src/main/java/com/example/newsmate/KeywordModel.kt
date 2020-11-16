@@ -1,7 +1,7 @@
 package com.example.newsmate
 
-    class KeywordModel {
-        var keyword: String? = null
+    class KeywordModel(val id: Int,var keyword: String) {
+        //var keyword: String? = null
 
         fun getKeywords(): String {
             return keyword.toString()
