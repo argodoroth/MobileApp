@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "321169837819",
+    "firebase_url": "https://mobileapp-81b72.firebaseio.com",
+    "project_id": "mobileapp-81b72",
+    "storage_bucket": "mobileapp-81b72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321169837819:android:a2260072409bb0dea4ea5e",
+        "android_client_info": {
+          "package_name": "com.example.newsmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321169837819-aldsbnvtvuevd4nhgtf4mrdc9rqkance.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD41TWAieKt6KOc7E2RzGZfnf9kosUzZW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321169837819-aldsbnvtvuevd4nhgtf4mrdc9rqkance.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

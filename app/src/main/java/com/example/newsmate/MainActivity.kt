@@ -11,7 +11,7 @@ import android.view.View
 import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsmate.BuildConfig.DEBUG
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             val username = extras.getString("Username")
         }
 
-
     }
 
     //Creates the option menu by inflating the layout
@@ -65,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 
 
     //for moment used to make list of stub data, will later be used to populate with taken data

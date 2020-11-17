@@ -15,5 +15,7 @@
     <string name="settings">settings</string>
     <string name="logout">log out</string>
     <string name="add">add</string>
+    <string name="register">register</string>
+    <string name="invalid_user">invalid user</string>
 
 </resources>

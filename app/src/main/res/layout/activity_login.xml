@@ -20,7 +20,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/userField"
+            android:id="@+id/emailField"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/user_Text"
@@ -28,7 +28,7 @@
             android:layout_margin="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/userFieldData"
+                android:id="@+id/emailFieldData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -45,11 +45,13 @@
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordFieldData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
@@ -57,9 +59,14 @@
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="@color/colorAccent"
-        android:onClick="buttonClick"
-        android:text="@string/login">
+        android:text="@string/login"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/register"/>
 
-    </com.google.android.material.button.MaterialButton>
 </androidx.appcompat.widget.LinearLayoutCompat>

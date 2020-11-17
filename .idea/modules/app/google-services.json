@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "669903593015",
+    "firebase_url": "https://newsmate-36227.firebaseio.com",
+    "project_id": "newsmate-36227",
+    "storage_bucket": "newsmate-36227.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669903593015:android:9de070144e3c7ccf7ce9b2",
+        "android_client_info": {
+          "package_name": "com.example.newsmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669903593015-bdb20rjngn6o39cjemgn5p6tktacasch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.newsmate",
+            "certificate_hash": "fa878f94e4cbf76d66783b6760beab258d2462af"
+          }
+        },
+        {
+          "client_id": "669903593015-hlfrs9b7nngb7ru9dvm8v6jlqt46sd2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2ZzlRbeWJaVluGs5Gfk327iKBWlQL2xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669903593015-hlfrs9b7nngb7ru9dvm8v6jlqt46sd2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
