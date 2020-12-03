@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="4dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fullTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorText"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fullSummaryText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:textSize="12dp"
+        android:textColor="@color/colorText"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fullPublisherText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fullSummaryText"
+        android:layout_alignParentRight="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginRight="12dp"
+        android:textColor="@color/colorMasked"
+        android:gravity="right"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/saveButton"
+    android:layout_width="100dp"
+    android:layout_height="50dp"
+    android:layout_gravity="right"
+    android:layout_marginRight="25dp"
+    android:backgroundTint="@color/colorPrimaryDark"
+    android:text="@string/save"
+    />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
