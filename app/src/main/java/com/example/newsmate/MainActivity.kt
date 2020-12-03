@@ -8,6 +8,7 @@ import android.util.Log.DEBUG
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ import com.dfl.newsapi.enums.Category
 import com.dfl.newsapi.enums.Country
 import com.example.newsmate.BuildConfig.DEBUG
 import com.koushikdutta.ion.Ion
+import com.squareup.picasso.Picasso
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONObject
 
@@ -25,17 +27,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Creates recycler view with new articles
         getNewsArticle()
-
 
         //Creates appBar at top of screen
         val appBar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(appBar)
 
-        //Tries to pull news info
         //val newsApiRepository = NewsApiRepository("0f08db7fe14342799c6f6ea2be6623fe")
-        //getNewsArticle(newsApiRepository)
-        //Log.d("JSON", obj.toString())
     }
 
     //Creates the option menu by inflating the layout
@@ -60,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    //Gets a json object of list of news articles from newsAPI.org
     private fun getNewsArticle(){
         Ion.with(this)
             .load("GET", "https://newsapi.org/v2/top-headlines?country=us&apiKey=0f08db7fe14342799c6f6ea2be6623fe")
@@ -97,11 +97,14 @@ class MainActivity : AppCompatActivity() {
 
         for (i in 0..9) {
             val obj = jsonArr.getJSONObject(i)
+            val source = obj.getJSONObject("source")
+            val imageView = findViewById<ImageView>(R.id.icon)
+
             val article = ArticleModel()
-            article.setImages(myImageList[i])
-            article.setPublishers(myPublisherList[i])
+            article.setImages(obj.getString("urlToImage"))
+            article.setPublishers(source.getString("name"))
             article.setTitles(obj.getString("title"))
-            article.setSummaries(exampleSum)
+            article.setSummaries(obj.getString("description"))
             list.add(article)
         }
 

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 
 class ArticleAdapter (private val articleArray: MutableList<ArticleModel>) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
@@ -23,8 +24,8 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>) : Rec
     //binds values to each view holder as is generated
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val info = articleArray[position]
-
-        holder.imgView.setImageResource(info.getImages())
+        //uses picasso loader to get image from the image url
+        Picasso.get().load(info.getImages()).into(holder.imgView)
         holder.titleView.text = info.getTitles()
         holder.sumView.text = info.getSummaries()
         holder.pubView.text = info.getPublishers()

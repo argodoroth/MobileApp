@@ -5,7 +5,7 @@ class ArticleModel {
     var articleTitle: String? = null
     var publisher: String? = null
     var summaryText: String? = null
-    private var image: Int=0
+    private var imageURL: String? = null
 
     fun getTitles(): String {
         return articleTitle.toString()
@@ -19,8 +19,8 @@ class ArticleModel {
         return summaryText.toString()
     }
 
-    fun getImages(): Int {
-        return image
+    fun getImages(): String {
+        return imageURL.toString()
     }
 
     fun setTitles(name: String) {
@@ -35,7 +35,7 @@ class ArticleModel {
         this.summaryText = sum
     }
 
-    fun setImages(image_draw: Int) {
-        this.image = image_draw
+    fun setImages(image_url: String) {
+        this.imageURL = image_url
     }
 }
