@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.newsmate"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -23,6 +23,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -41,5 +46,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'com.koushikdutta.ion:ion:3.0.9'
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
+
+    implementation 'com.github.dfloureiro:news-api-kotlin:v2.1'
 }
