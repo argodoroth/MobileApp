@@ -72,8 +72,15 @@ class MainActivity : AppCompatActivity() {
 
     //Gets a json object of list of news articles from newsAPI.org
     private fun getNewsArticle(keyString: String){
+        var url = ""
+        //will do topheadlines search if no keywords
+        if (keyString == "") {
+            url = "https://newsapi.org/v2/top-headlines?country=gb&apiKey=0f08db7fe14342799c6f6ea2be6623fe"
+        } else {
+            url = "https://newsapi.org/v2/everything?q=$keyString&apiKey=0f08db7fe14342799c6f6ea2be6623fe"
+        }
         Ion.with(this)
-            .load("GET", "https://newsapi.org/v2/everything?q=$keyString&apiKey=0f08db7fe14342799c6f6ea2be6623fe")
+            .load("GET", url)
             .setHeader("user-agent", "insomnia/2020.4.1")
             .asString()
             //will throw an exception if does not work
@@ -126,11 +133,13 @@ class MainActivity : AppCompatActivity() {
     //URL encodes list of keywords so can be used as a search string
     private fun makeSearchString(keywords: MutableList<KeywordModel>): String{
         var searchStr = ""
-        for (key in keywords){
-            val keyword = key.getKeywords()
-            searchStr += "$keyword%20OR%20"
+        if (keywords.size>=1){
+            for (key in keywords){
+                val keyword = key.getKeywords()
+                searchStr += "$keyword%20OR%20"
+            }
+            searchStr = searchStr.substring(0,searchStr.length-8)
         }
-        searchStr = searchStr.substring(0,searchStr.length-8)
         Log.d("STRINGG", searchStr)
         return searchStr
     }
