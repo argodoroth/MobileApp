@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.Log.DEBUG
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -126,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<View>(R.id.article_recycler_view) as RecyclerView //bind to layout
         val layoutManager = LinearLayoutManager(this) //Allows parent to manipulate views
         recyclerView.layoutManager = layoutManager //binds layout manager to recycler
-        val artAdapter = ArticleAdapter(list)
+        val artAdapter = ArticleAdapter(list, this)
         recyclerView.adapter = artAdapter
     }
 
