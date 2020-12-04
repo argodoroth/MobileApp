@@ -53,9 +53,14 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>) : Rec
 
         //makes on click function for holder to react to
         override fun onClick(v: View) {
-            val msg = titleView.text
-            val snackbar = Snackbar.make(v, "$msg are the best!", Snackbar.LENGTH_LONG)
+            val title = titleView.text
+            val image = imgView.drawable
+            val sum = sumView.text
+            val pub = pubView.text
+
+            val snackbar = Snackbar.make(v, "$title are the best!", Snackbar.LENGTH_LONG)
             snackbar.show()
+            //add an intent here!!
         }
     }
 }

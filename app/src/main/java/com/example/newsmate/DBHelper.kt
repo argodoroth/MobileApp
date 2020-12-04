@@ -23,6 +23,7 @@ class SqliteDatabase(context: Context) :
         onCreate(db) // would be better to put into list, then use to populate new db
     }
 
+    //Gets a list of the keywords out of the database
     fun listKeywords(): MutableList<KeywordModel> {    //must be a mutable list
         val sql = "SELECT * from $TABLE_KEYWORDS"
         val db = this.readableDatabase

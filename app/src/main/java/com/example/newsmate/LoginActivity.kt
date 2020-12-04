@@ -21,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.passwordFieldData)
 
         //makes sign in function for login button
+        //Authorizes the email and password with mAuth function
         val loginButton = findViewById<Button>(R.id.loginButton)
         loginButton.setOnClickListener {view ->
             mAuth.signInWithEmailAndPassword(
