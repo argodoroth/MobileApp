@@ -18,6 +18,7 @@
     <string name="register">register</string>
     <string name="invalid_user">invalid user</string>
     <string name="save">save</string>
+    <string name="delete">delete</string>
 
 
 </resources>

@@ -33,6 +33,7 @@ class SingleArticleActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+
     private fun saveArticle(mDatabase: SqliteDatabase){
         val pub = intent.getStringExtra("publisher").toString()
         val title = intent.getStringExtra("title").toString()
@@ -40,6 +41,11 @@ class SingleArticleActivity : AppCompatActivity() {
         val imgURL = intent.getStringExtra("imageURL").toString()
         mDatabase.addArticle(title,pub,sum,imgURL)
     }
+
+    /*private fun deleteArticle(mDatabase: SqliteDatabase){
+        val pos = intent.getIntExtra("position",-1)
+        mDatabase.deleteKeyword(pos)
+    }*/
 
     private fun displayArticle(){
         val pub = intent.getStringExtra("publisher")

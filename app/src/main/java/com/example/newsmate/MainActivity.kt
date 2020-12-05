@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         //Creates appBar at top of screen
         val appBar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(appBar)
@@ -28,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         val mDatabase = SqliteDatabase(this)
         val keywords: MutableList<KeywordModel> = mDatabase.listKeywords()
         val search = makeSearchString(keywords)
-        
         //Creates recycler view with new articles
         getNewsArticle(search)
+        //displayRecycler(mDatabase.listArticles())
     }
 
 

@@ -62,12 +62,14 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>,val co
             val image = imgView.drawable
             val sum = sumView.text
             val pub = pubView.text
+            val position = adapterPosition
             val intent = Intent(context, SingleArticleActivity::class.java)
             //Passes info across to article display screen
             intent.putExtra("title", title)
             intent.putExtra("publisher", pub)
             intent.putExtra("summary", sum)
             intent.putExtra("imageURL", imageURL )
+            intent.putExtra("position", position)
 
             context.startActivity(intent)
 

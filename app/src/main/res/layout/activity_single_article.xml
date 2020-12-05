@@ -55,15 +55,29 @@
         android:gravity="right"
         />
 
-    <androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/saveButton"
-    android:layout_width="100dp"
-    android:layout_height="50dp"
-    android:layout_gravity="right"
-    android:layout_marginRight="25dp"
-    android:backgroundTint="@color/colorPrimaryDark"
-    android:text="@string/save"
-    />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/deleteButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="25dp"
+            android:backgroundTint="@color/colorMasked"
+            android:text="@string/delete"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="160dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:text="@string/save"
+        />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
