@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -32,6 +33,7 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>,val co
         holder.titleView.text = info.getTitles()
         holder.sumView.text = info.getSummaries()
         holder.pubView.text = info.getPublishers()
+        holder.imageURL = info.getImages()
     }
 
     //max size of views to be generated
@@ -48,19 +50,25 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>,val co
         var titleView = itemView.findViewById<View>(R.id.title) as TextView
         var sumView = itemView.findViewById<View>(R.id.summaryText) as TextView
         var pubView = itemView.findViewById<View>(R.id.publisherText) as TextView
-
+        var imageURL = ""
 
         init {
             itemView.setOnClickListener(this)
         }
 
-        //makes on click function for holder to react to
+        //makes onClick function using context of main activity to take to new screen
         override fun onClick(v: View) {
             val title = titleView.text
             val image = imgView.drawable
             val sum = sumView.text
             val pub = pubView.text
             val intent = Intent(context, SingleArticleActivity::class.java)
+            //Passes info across to article display screen
+            intent.putExtra("title", title)
+            intent.putExtra("publisher", pub)
+            intent.putExtra("summary", sum)
+            intent.putExtra("imageURL", imageURL )
+
             context.startActivity(intent)
 
             //val snackbar = Snackbar.make(v, "$title are the best!", Snackbar.LENGTH_LONG)

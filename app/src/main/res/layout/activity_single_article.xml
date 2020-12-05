@@ -15,7 +15,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/icon"
+        android:id="@+id/newsImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
@@ -39,7 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_alignWithParentIfMissing="true"
         android:textSize="12dp"
-        android:textColor="@color/colorText"/>
+        android:textColor="@color/colorText"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/fullPublisherText"

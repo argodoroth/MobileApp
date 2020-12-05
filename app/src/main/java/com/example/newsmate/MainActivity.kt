@@ -8,16 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dfl.newsapi.NewsApiRepository
-import com.dfl.newsapi.enums.Category
-import com.dfl.newsapi.enums.Country
-import com.example.newsmate.BuildConfig.DEBUG
 import com.koushikdutta.ion.Ion
-import com.squareup.picasso.Picasso
-import io.reactivex.schedulers.Schedulers
 import org.json.JSONObject
 
 
@@ -39,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         //Creates recycler view with new articles
         getNewsArticle(search)
     }
+
 
     //Creates the option menu by inflating the layout
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -69,15 +63,18 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
     //Gets a json object of list of news articles from newsAPI.org
     private fun getNewsArticle(keyString: String){
         var url = ""
+
         //will do topheadlines search if no keywords
         if (keyString == "") {
             url = "https://newsapi.org/v2/top-headlines?country=gb&apiKey=0f08db7fe14342799c6f6ea2be6623fe"
         } else {
             url = "https://newsapi.org/v2/everything?q=$keyString&apiKey=0f08db7fe14342799c6f6ea2be6623fe"
         }
+        //Populates list of articles using an ion pull
         Ion.with(this)
             .load("GET", url)
             .setHeader("user-agent", "insomnia/2020.4.1")
@@ -89,13 +86,6 @@ class MainActivity : AppCompatActivity() {
                 populateList(json)
             }
     }
-
-    private fun processArticle(articleData: String){
-        val myJSON = JSONObject(articleData)
-        val myEx = myJSON.getString("title")
-        Log.d("ArtTitle", myEx)
-    }
-
 
 
     //Gathers data from a json object containing a list of articles
@@ -128,6 +118,7 @@ class MainActivity : AppCompatActivity() {
         val artAdapter = ArticleAdapter(list, this)
         recyclerView.adapter = artAdapter
     }
+
 
     //URL encodes list of keywords so can be used as a search string
     private fun makeSearchString(keywords: MutableList<KeywordModel>): String{
