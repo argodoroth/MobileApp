@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val mDatabase = SqliteDatabase(this)
         val keywords: MutableList<KeywordModel> = mDatabase.listKeywords()
         val search = makeSearchString(keywords)
-
+        
         //Creates recycler view with new articles
         getNewsArticle(search)
     }
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
     //Gathers data from a json object containing a list of articles
     private fun populateList(json: JSONObject){
-        val list = ArrayList<ArticleModel>()
+        val list = mutableListOf<ArticleModel>()
         val jsonArr = json.getJSONArray("articles")
 
         //Will get items from json and add them to article object
@@ -99,11 +99,12 @@ class MainActivity : AppCompatActivity() {
             val source = obj.getJSONObject("source")
             val imageView = findViewById<ImageView>(R.id.icon)
 
-            val article = ArticleModel()
-            article.setImages(obj.getString("urlToImage"))
-            article.setPublishers(source.getString("name"))
-            article.setTitles(obj.getString("title"))
-            article.setSummaries(obj.getString("description"))
+            val title = obj.getString("title")
+            val pub = source.getString("name")
+            val sum = obj.getString("description")
+            val imgURL = obj.getString("urlToImage")
+
+            val article = ArticleModel(0, title, pub, sum, imgURL)
             list.add(article)
         }
 
@@ -111,7 +112,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Displays a list of articles in a recycler view
-    private fun displayRecycler(list: ArrayList<ArticleModel>){
+    private fun displayRecycler(list: MutableList<ArticleModel>){
         val recyclerView = findViewById<View>(R.id.article_recycler_view) as RecyclerView //bind to layout
         val layoutManager = LinearLayoutManager(this) //Allows parent to manipulate views
         recyclerView.layoutManager = layoutManager //binds layout manager to recycler

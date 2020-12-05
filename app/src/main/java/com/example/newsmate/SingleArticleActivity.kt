@@ -3,6 +3,7 @@ package com.example.newsmate
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,11 +20,25 @@ class SingleArticleActivity : AppCompatActivity() {
         val appBar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(appBar)
 
+        val mDatabase = SqliteDatabase(this)
+
+        val saveButton = findViewById<Button>(R.id.saveButton)
+        saveButton.setOnClickListener(){
+            saveArticle(mDatabase)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate((R.menu.appbar_layout), menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun saveArticle(mDatabase: SqliteDatabase){
+        val pub = intent.getStringExtra("publisher").toString()
+        val title = intent.getStringExtra("title").toString()
+        val sum = intent.getStringExtra("summary").toString()
+        val imgURL = intent.getStringExtra("imageURL").toString()
+        mDatabase.addArticle(title,pub,sum,imgURL)
     }
 
     private fun displayArticle(){

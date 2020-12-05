@@ -1,11 +1,11 @@
 package com.example.newsmate
 
 //Basic model for adapter to access/ assign article values
-class ArticleModel {
-    var articleTitle: String? = null
-    var publisher: String? = null
-    var summaryText: String? = null
-    private var imageURL: String? = null
+class ArticleModel(val id: Int, var articleTitle: String, var publisher: String, var summaryText: String, var imageURL: String) {
+    //var articleTitle: String? = null
+    //var publisher: String? = null
+    //var summaryText: String? = null
+    //private var imageURL: String? = null
 
     fun getTitles(): String {
         return articleTitle.toString()
