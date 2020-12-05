@@ -1,5 +1,6 @@
 package com.example.newsmate
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -26,6 +27,11 @@ class SingleArticleActivity : AppCompatActivity() {
         saveButton.setOnClickListener(){
             saveArticle(mDatabase)
         }
+
+        val deleteButton = findViewById<Button>(R.id.deleteButton)
+        deleteButton.setOnClickListener(){
+            deleteArticle(mDatabase)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -42,10 +48,12 @@ class SingleArticleActivity : AppCompatActivity() {
         mDatabase.addArticle(title,pub,sum,imgURL)
     }
 
-    /*private fun deleteArticle(mDatabase: SqliteDatabase){
-        val pos = intent.getIntExtra("position",-1)
-        mDatabase.deleteKeyword(pos)
-    }*/
+    private fun deleteArticle(mDatabase: SqliteDatabase){
+        val id = intent.getIntExtra("id",-1)
+        mDatabase.deleteArticle(id)
+        val newIntent = Intent(this,MainActivity::class.java)
+        startActivity(newIntent)
+    }
 
     private fun displayArticle(){
         val pub = intent.getStringExtra("publisher")

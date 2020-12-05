@@ -3,16 +3,13 @@ package com.example.newsmate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsmate.SqliteDatabase
-import com.example.newsmate.KeywordAdapter
-import kotlinx.android.synthetic.main.activity_menu.*
+import com.example.newsmate.adapters.KeywordAdapter
 
 class KeywordsActivity : AppCompatActivity(){
     //val keywords = populateList()

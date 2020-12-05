@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsmate.adapters.ArticleAdapter
 import com.koushikdutta.ion.Ion
 import org.json.JSONObject
 
@@ -28,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         val keywords: MutableList<KeywordModel> = mDatabase.listKeywords()
         val search = makeSearchString(keywords)
         //Creates recycler view with new articles
-        getNewsArticle(search)
-        //displayRecycler(mDatabase.listArticles())
+        //getNewsArticle(search)
+        displayRecycler(mDatabase.listArticles())
     }
 
 

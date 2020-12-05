@@ -15,10 +15,11 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         />
-
+    
+    
     <androidx.recyclerview.widget.RecyclerView class="androidx.recyclerview.widget.RecyclerView"
-        android:id="@+id/article_recycler_view"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:scrollbars="vertical" />
+    android:id="@+id/article_recycler_view"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:scrollbars="vertical" />
 </androidx.appcompat.widget.LinearLayoutCompat>

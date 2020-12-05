@@ -1,14 +1,14 @@
-package com.example.newsmate
+package com.example.newsmate.adapters
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
-import org.w3c.dom.Text
+import com.example.newsmate.KeywordModel
+import com.example.newsmate.R
+import com.example.newsmate.SqliteDatabase
 
 class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>, private val mDatabase: SqliteDatabase) : RecyclerView.Adapter<KeywordAdapter.ViewHolder>() {
     //Inflate views using layout defined in article_layout.xml

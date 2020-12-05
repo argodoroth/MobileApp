@@ -1,22 +1,19 @@
-package com.example.newsmate
+package com.example.newsmate.adapters
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
+import com.example.newsmate.ArticleModel
+import com.example.newsmate.R
+import com.example.newsmate.SingleArticleActivity
 import com.squareup.picasso.Picasso
-import org.w3c.dom.Text
 
-class ArticleAdapter (private val articleArray: MutableList<ArticleModel>,val context: Context) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
+class ArticleAdapter (private val articleArray: MutableList<ArticleModel>, val context: Context) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
     //Inflate views using layout defined in article_layout.xml
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -34,6 +31,7 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>,val co
         holder.sumView.text = info.getSummaries()
         holder.pubView.text = info.getPublishers()
         holder.imageURL = info.getImages()
+        holder.articleID = info.id
     }
 
     //max size of views to be generated
@@ -51,6 +49,7 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>,val co
         var sumView = itemView.findViewById<View>(R.id.summaryText) as TextView
         var pubView = itemView.findViewById<View>(R.id.publisherText) as TextView
         var imageURL = ""
+        var articleID = -1
 
         init {
             itemView.setOnClickListener(this)
@@ -62,14 +61,13 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>,val co
             val image = imgView.drawable
             val sum = sumView.text
             val pub = pubView.text
-            val position = adapterPosition
             val intent = Intent(context, SingleArticleActivity::class.java)
             //Passes info across to article display screen
             intent.putExtra("title", title)
             intent.putExtra("publisher", pub)
             intent.putExtra("summary", sum)
             intent.putExtra("imageURL", imageURL )
-            intent.putExtra("position", position)
+            intent.putExtra("id", articleID)
 
             context.startActivity(intent)
 
