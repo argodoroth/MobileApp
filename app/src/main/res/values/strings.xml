@@ -20,5 +20,9 @@
     <string name="save">save</string>
     <string name="delete">delete</string>
 
+    <string-array name ="tabs">
+        <item>News</item>
+        <item>Saved</item>
+    </string-array>
 
 </resources>

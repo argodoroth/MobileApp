@@ -42,7 +42,7 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>, val c
     /*
     Parent class that handles layout inflation and child view use
      */
-    inner class ViewHolder(itemView: View, context: Context) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
+    inner class ViewHolder(itemView: View, context: Context?) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
         //assigns values to the views so can be modified
         var imgView = itemView.findViewById<View>(R.id.icon) as ImageView
         var titleView = itemView.findViewById<View>(R.id.title) as TextView

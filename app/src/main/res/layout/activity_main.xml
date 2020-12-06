@@ -16,10 +16,15 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         />
     
-    
-    <androidx.recyclerview.widget.RecyclerView class="androidx.recyclerview.widget.RecyclerView"
-    android:id="@+id/article_recycler_view"
-    android:layout_height="match_parent"
+    <com.google.android.material.tabs.TabLayout
     android:layout_width="match_parent"
-    android:scrollbars="vertical" />
+    android:layout_height="wrap_content"
+    android:id="@+id/tab_layout"
+    />
+    
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pager"
+        />
 </androidx.appcompat.widget.LinearLayoutCompat>

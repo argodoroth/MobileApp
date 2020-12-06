@@ -10,7 +10,11 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.newsmate.adapters.ArticleAdapter
+import com.example.newsmate.adapters.TabAdapter
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.koushikdutta.ion.Ion
 import org.json.JSONObject
 
@@ -24,13 +28,30 @@ class MainActivity : AppCompatActivity() {
         val appBar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(appBar)
 
+        //Setup tab layout with pagers to display in activity
+        val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
+        val viewPager = findViewById<ViewPager2>(R.id.pager)
+        val tabTitles = resources.getStringArray(R.array.tabs)
+
+        //attaches adapter to tabs and gives titles
+        viewPager.adapter = TabAdapter(this)    //
+        TabLayoutMediator(tabLayout, viewPager,
+            TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
+            when (position) {
+                0 -> tab.text = tabTitles[0]
+                1 -> tab.text = tabTitles[1]
+            }
+        }).attach()
+
+
         //get keywords to be used in keyword search
         val mDatabase = SqliteDatabase(this)
         val keywords: MutableList<KeywordModel> = mDatabase.listKeywords()
         val search = makeSearchString(keywords)
+
         //Creates recycler view with new articles
-        //getNewsArticle(search)
-        displayRecycler(mDatabase.listArticles())
+        getNewsArticle(search)
+
     }
 
 
@@ -109,6 +130,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         displayRecycler(list)
+
     }
 
     //Displays a list of articles in a recycler view
