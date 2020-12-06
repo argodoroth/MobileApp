@@ -1,5 +1,6 @@
 package com.example.newsmate
 
+import android.app.Notification
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -20,6 +22,8 @@ import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
+    private var notificationHelper: NotificationHelper? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -52,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         //Creates recycler view with new articles
         getNewsArticle(search)
 
+
+        //Makes an object to manage notifications
+        notificationHelper = NotificationHelper(this)
     }
 
 
@@ -67,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> {
                 val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
+                postNotification(not1, "Notify!")
                 return true
             }
             R.id.action_search -> {
@@ -74,6 +82,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            //Reloads recycler view with new search
             R.id.action_refresh -> {
                 val mDatabase = SqliteDatabase(this)
                 val keywords: MutableList<KeywordModel> = mDatabase.listKeywords()
@@ -83,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 
 
     //Gets a json object of list of news articles from newsAPI.org
@@ -107,7 +117,6 @@ class MainActivity : AppCompatActivity() {
                 populateList(json)
             }
     }
-
 
     //Gathers data from a json object containing a list of articles
     private fun populateList(json: JSONObject){
@@ -143,6 +152,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     //URL encodes list of keywords so can be used as a search string
     private fun makeSearchString(keywords: MutableList<KeywordModel>): String{
         var searchStr = ""
@@ -155,5 +165,20 @@ class MainActivity : AppCompatActivity() {
         }
         Log.d("STRINGG", searchStr)
         return searchStr
+    }
+
+    //Will build notification and then send through notification manager
+    fun postNotification(id:Int, title: String) {
+        var notificationBuilder: NotificationCompat.Builder? = null
+        when (id) {
+            not1 -> notificationBuilder = notificationHelper!!.getNotification1(title,"This is a notification")
+        }
+        if (notificationBuilder != null) {
+            notificationHelper!!.notify(id,notificationBuilder)
+        }
+    }
+
+    companion object {
+        private const val not1 = 100
     }
 }
