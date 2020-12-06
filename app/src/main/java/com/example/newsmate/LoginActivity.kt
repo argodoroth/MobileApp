@@ -17,12 +17,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val email = findViewById<EditText>(R.id.emailFieldData)
-        val password = findViewById<EditText>(R.id.passwordFieldData)
+        val email = findViewById<EditText>(R.id.email_field_data)
+        val password = findViewById<EditText>(R.id.password_field_data)
 
         //makes sign in function for login button
         //Authorizes the email and password with mAuth function
-        val loginButton = findViewById<Button>(R.id.loginButton)
+        val loginButton = findViewById<Button>(R.id.login_button)
         loginButton.setOnClickListener {view ->
             mAuth.signInWithEmailAndPassword(
                 email.text.toString(),
@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
-        val registerButton = findViewById<Button>(R.id.registerButton)
+        val registerButton = findViewById<Button>(R.id.register_button)
         registerButton.setOnClickListener { view ->
             mAuth.createUserWithEmailAndPassword(
                 email.text.toString(),
@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun buttonClick(view: View){
         val intent = Intent(this, MainActivity::class.java)
-        val userField = findViewById<EditText>(R.id.emailFieldData);
+        val userField = findViewById<EditText>(R.id.email_field_data);
         intent.putExtra("Username", userField.text.toString())
         startActivity(intent)
     }

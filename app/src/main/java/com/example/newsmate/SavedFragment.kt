@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsmate.adapters.ArticleAdapter
 
+//fragment to display saved articles
 class SavedFragment: Fragment() {
     //Inflates tab and inflates inner recycler view using db data
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

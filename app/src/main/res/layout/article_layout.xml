@@ -28,7 +28,7 @@
         android:textColor="@color/colorText"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/summaryText"
+        android:id="@+id/summary_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -38,10 +38,10 @@
         android:textColor="@color/colorText"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/publisherText"
+        android:id="@+id/publisher_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/summaryText"
+        android:layout_below="@id/summary_text"
         android:layout_alignParentRight="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_marginRight="12dp"

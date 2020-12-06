@@ -34,7 +34,7 @@
         android:background="@color/colorMasked"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/addKeywords"
+        android:id="@+id/add_keywords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
@@ -52,7 +52,7 @@
         android:background="@color/colorMasked"/>
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/localNewsSwitch"
+        android:id="@+id/local_news_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -69,55 +69,7 @@
         android:layout_height="1dp"
         android:background="@color/colorMasked"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/savedArticles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:text="@string/savedArticles"
-        android:textSize="30dp"
-        android:textColor="@color/colorText"
-        />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorMasked"/>
-
-
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/accessibility"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/colorPrimaryDark"
-        />
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="1dp"
-       android:background="@color/colorMasked"/>
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/darkThemeSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="@string/darkTheme"
-        android:textSize="30dp"
-        android:textColor="@color/colorText"
-        android:paddingTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        />
 
     <View
         android:layout_width="match_parent"
@@ -134,26 +86,26 @@
         android:paddingTop="30dp"
         android:paddingLeft="10dp"
         android:paddingBottom="10dp"
-        android:text="@string/personal"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/colorPrimaryDark"
-        />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorMasked"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
         android:text="@string/acc"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorMasked"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/log_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:text="@string/logout"
         android:textSize="30dp"
         android:textColor="@color/colorText"
         />

@@ -46,8 +46,8 @@ class ArticleAdapter (private val articleArray: MutableList<ArticleModel>, val c
         //assigns values to the views so can be modified
         var imgView = itemView.findViewById<View>(R.id.icon) as ImageView
         var titleView = itemView.findViewById<View>(R.id.title) as TextView
-        var sumView = itemView.findViewById<View>(R.id.summaryText) as TextView
-        var pubView = itemView.findViewById<View>(R.id.publisherText) as TextView
+        var sumView = itemView.findViewById<View>(R.id.summary_text) as TextView
+        var pubView = itemView.findViewById<View>(R.id.publisher_text) as TextView
         var imageURL = ""
         var articleID = -1
 

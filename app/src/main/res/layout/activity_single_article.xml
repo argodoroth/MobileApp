@@ -15,7 +15,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/newsImage"
+        android:id="@+id/news_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
@@ -24,7 +24,7 @@
         android:src="@mipmap/ic_launcher" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/fullTitle"
+        android:id="@+id/full_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignWithParentIfMissing="true"
@@ -34,7 +34,7 @@
         android:textColor="@color/colorText"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/fullSummaryText"
+        android:id="@+id/full_summary_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignWithParentIfMissing="true"
@@ -47,7 +47,7 @@
         android:id="@+id/fullPublisherText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fullSummaryText"
+        android:layout_below="@id/full_summary_text"
         android:layout_alignParentRight="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_marginRight="12dp"
@@ -60,7 +60,7 @@
         android:layout_height="50dp"
         >
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/deleteButton"
+            android:id="@+id/delete_button"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="right"
@@ -69,7 +69,7 @@
             android:text="@string/delete"
             />
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/saveButton"
+            android:id="@+id/save_button"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="right"

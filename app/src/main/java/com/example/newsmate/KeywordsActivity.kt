@@ -32,7 +32,7 @@ class KeywordsActivity : AppCompatActivity(){
         val appBar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(appBar)
 
-        val addButton = findViewById<Button>(R.id.addButton)
+        val addButton = findViewById<Button>(R.id.add_button)
         addButton.setOnClickListener(){
             addToKeywords(mDatabase,keyAdapter)
         }
@@ -46,7 +46,7 @@ class KeywordsActivity : AppCompatActivity(){
 
 
     private fun addToKeywords(mDatabase: SqliteDatabase, mAdapter: KeywordAdapter){
-        val wordInput = findViewById<TextView>(R.id.keywordFieldData)
+        val wordInput = findViewById<TextView>(R.id.keyword_field_data)
         val word = wordInput.text.toString()
         if (!TextUtils.isEmpty(word)){
             mAdapter.addKeyword(word)

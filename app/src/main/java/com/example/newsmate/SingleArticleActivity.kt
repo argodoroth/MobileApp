@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_single_article.*
 
+//Displays a single article on a separate screen
 class SingleArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,12 +24,12 @@ class SingleArticleActivity : AppCompatActivity() {
 
         val mDatabase = SqliteDatabase(this)
 
-        val saveButton = findViewById<Button>(R.id.saveButton)
+        val saveButton = findViewById<Button>(R.id.save_button)
         saveButton.setOnClickListener(){
             saveArticle(mDatabase)
         }
 
-        val deleteButton = findViewById<Button>(R.id.deleteButton)
+        val deleteButton = findViewById<Button>(R.id.delete_button)
         deleteButton.setOnClickListener(){
             deleteArticle(mDatabase)
         }
@@ -61,15 +62,15 @@ class SingleArticleActivity : AppCompatActivity() {
         pubView.text = pub
 
         val title = intent.getStringExtra("title")
-        val titView = findViewById<TextView>(R.id.fullTitle)
+        val titView = findViewById<TextView>(R.id.full_title)
         titView.text = title
 
         val sum = intent.getStringExtra("summary")
-        val sumView = findViewById<TextView>(R.id.fullSummaryText)
+        val sumView = findViewById<TextView>(R.id.full_summary_text)
         sumView.text = sum
 
         val imgURL = intent.getStringExtra("imageURL")
-        val imgView = findViewById<View>(R.id.newsImage) as ImageView
+        val imgView = findViewById<View>(R.id.news_image) as ImageView
         Picasso.get().load(imgURL).into(imgView)
     }
 }
