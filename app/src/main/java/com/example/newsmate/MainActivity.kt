@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         //starts news service
         val serviceIntent = Intent(this, NewsService::class.java)
         startService(serviceIntent)
-        Log.d("Broadcast actions","Done")
 
         //attaches adapter to tabs and gives titles
         viewPager.adapter = TabAdapter(this)    //
@@ -106,7 +105,6 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> {
                 val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
-                postNotification(not1, "Notify!","data")
                 return true
             }
             R.id.action_search -> {
@@ -171,7 +169,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         displayRecycler(list)
-
     }
 
     //Displays a list of articles in a recycler view

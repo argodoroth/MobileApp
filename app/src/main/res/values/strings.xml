@@ -21,6 +21,7 @@
     <string name="delete">delete</string>
     <string name="newStory">New story available</string>
     <string name="notify">notify?</string>
+    <string name="region">region</string>
 
     <string-array name ="tabs">
         <item>News</item>
@@ -28,11 +29,14 @@
     </string-array>
 
     <string-array name = "Countries">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>gb</item>
+        <item>us</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>cn</item>
+        <item>jp</item>
+        <item>it</item>
+        <item>cn</item>
     </string-array>
 
 </resources>
