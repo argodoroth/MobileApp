@@ -19,6 +19,7 @@
     <string name="invalid_user">invalid user</string>
     <string name="save">save</string>
     <string name="delete">delete</string>
+    <string name="newStory">New story available</string>
 
     <string-array name ="tabs">
         <item>News</item>

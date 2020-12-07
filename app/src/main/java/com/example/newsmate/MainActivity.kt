@@ -1,7 +1,10 @@
 package com.example.newsmate
 
 import android.app.Notification
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,6 +26,7 @@ import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     private var notificationHelper: NotificationHelper? = null
+    private var mIntentFilter: IntentFilter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,31 +41,61 @@ class MainActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager2>(R.id.pager)
         val tabTitles = resources.getStringArray(R.array.tabs)
 
-        //attaches adapter to tabs and gives titles
-        viewPager.adapter = TabAdapter(this)    //
-        TabLayoutMediator(tabLayout, viewPager,
-            TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
-            when (position) {
-                0 -> tab.text = tabTitles[0]
-                1 -> tab.text = tabTitles[1]
-            }
-        }).attach()
-
-
         //get keywords to be used in keyword search
         val mDatabase = SqliteDatabase(this)
         val keywords: MutableList<KeywordModel> = mDatabase.listKeywords()
         val search = makeSearchString(keywords)
 
+
         //Creates recycler view with new articles
         getNewsArticle(search)
 
+        //Uses intent filter
+        this.mIntentFilter = IntentFilter()
+        mIntentFilter!!.addAction(mBroadcastNotifyAction)
 
         //Makes an object to manage notifications
         notificationHelper = NotificationHelper(this)
+
+        //starts news service
+        val serviceIntent = Intent(this, NewsService::class.java)
+        startService(serviceIntent)
+        //stopService(serviceIntent)
+        Log.d("Broadcast actions","Done")
+
+        //attaches adapter to tabs and gives titles
+        viewPager.adapter = TabAdapter(this)    //
+        TabLayoutMediator(tabLayout, viewPager,
+            TabLayoutMediator.TabConfigurationStrategy{ tab, position ->
+                when (position) {
+                    0 -> tab.text = tabTitles[0]
+                    1 -> tab.text = tabTitles[1]
+                }
+            }).attach()
     }
 
 
+    public override fun onResume() {
+        super.onResume()
+        registerReceiver(mReceiver, mIntentFilter)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(mReceiver)
+    }
+
+    private val mReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent) {
+            when (intent.action) {
+                mBroadcastNotifyAction -> {
+                    val artTitle = intent.getStringExtra("Title")
+                    Log.d("Broadcast2","Recieved")
+                    postNotification(not1,"New story available", artTitle.toString())
+                }
+            }
+        }
+    }
     //Creates the option menu by inflating the layout
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate((R.menu.appbar_layout), menu)
@@ -74,7 +108,7 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> {
                 val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
-                postNotification(not1, "Notify!")
+                postNotification(not1, "Notify!","data")
                 return true
             }
             R.id.action_search -> {
@@ -154,7 +188,7 @@ class MainActivity : AppCompatActivity() {
 
 
     //URL encodes list of keywords so can be used as a search string
-    private fun makeSearchString(keywords: MutableList<KeywordModel>): String{
+    fun makeSearchString(keywords: MutableList<KeywordModel>): String{
         var searchStr = ""
         if (keywords.size>=1){
             for (key in keywords){
@@ -163,15 +197,15 @@ class MainActivity : AppCompatActivity() {
             }
             searchStr = searchStr.substring(0,searchStr.length-8)
         }
-        Log.d("STRINGG", searchStr)
         return searchStr
     }
 
+
     //Will build notification and then send through notification manager
-    fun postNotification(id:Int, title: String) {
+    fun postNotification(id:Int, title: String, body: String) {
         var notificationBuilder: NotificationCompat.Builder? = null
         when (id) {
-            not1 -> notificationBuilder = notificationHelper!!.getNotification1(title,"This is a notification")
+            not1 -> notificationBuilder = notificationHelper!!.getNotification1(title,body)
         }
         if (notificationBuilder != null) {
             notificationHelper!!.notify(id,notificationBuilder)
@@ -180,5 +214,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val not1 = 100
+        const val mBroadcastNotifyAction = "com.example.broadcast.notify"
     }
 }
