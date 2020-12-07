@@ -20,10 +20,19 @@
     <string name="save">save</string>
     <string name="delete">delete</string>
     <string name="newStory">New story available</string>
+    <string name="notify">notify?</string>
 
     <string-array name ="tabs">
         <item>News</item>
         <item>Saved</item>
+    </string-array>
+
+    <string-array name = "Countries">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
     </string-array>
 
 </resources>

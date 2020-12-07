@@ -62,8 +62,10 @@ class NewsService : Service() {
         var searchStr = ""
         if (keywords.size>=1){
             for (key in keywords){
-                val keyword = key.getKeywords()
-                searchStr += "$keyword%20OR%20"
+                if (key.getNotifies()) {
+                    val keyword = key.getKeywords()
+                    searchStr += "$keyword%20OR%20"
+                }
             }
             searchStr = searchStr.substring(0,searchStr.length-8)
         }

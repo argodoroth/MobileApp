@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.net.UrlQuerySanitizer
 import com.example.newsmate.KeywordModel
 
 class SqliteDatabase(context: Context) :
@@ -11,7 +12,7 @@ class SqliteDatabase(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase) {
         val CREATE_KEYWORDS_TABLE =
-            "CREATE TABLE $TABLE_KEYWORDS($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_KEYWORD_TITLE TEXT)"
+            "CREATE TABLE $TABLE_KEYWORDS($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_KEYWORD_TITLE TEXT, $COLUMN_KEYWORD_NOTIFY INTEGER)"
         /*val CREATE_USERS_TABLE =
             "CREATE TABLE $TABLE_USERS($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_KEYWORD_TITLE TEXT)"*/
         val CREATE_ARTICLES_TABLE =
@@ -38,7 +39,8 @@ class SqliteDatabase(context: Context) :
             do {
                 val id = Integer.parseInt(cursor.getString(0))//gets value from first column
                 val word = cursor.getString(1)
-                storeWords.add(KeywordModel(id, word))
+                val notify = cursor.getString(2)
+                storeWords.add(KeywordModel(id, word, notify == "1"))
             } while (cursor.moveToNext())
         }
         cursor.close() //Like a reader
@@ -70,6 +72,7 @@ class SqliteDatabase(context: Context) :
     fun addKeyword(word: String) {
         val values = ContentValues()
         values.put(COLUMN_KEYWORD_TITLE, word)
+        values.put(COLUMN_KEYWORD_NOTIFY,1)
         val db = this.writableDatabase
         db.insert(TABLE_KEYWORDS, null, values)
     }
@@ -96,7 +99,20 @@ class SqliteDatabase(context: Context) :
     fun deleteArticle(id: Int) {
         val db = this.writableDatabase
         //Passes wildcard into where clause to find the row where id == id
-        db.delete(TABLE_ARTICLES, "$COLUMN_ID = ?", arrayOf(id.toString()))
+        db.delete(TABLE_ARTICLES, "$COLUMN_ARTICLE_ID = ?", arrayOf(id.toString()))
+    }
+
+
+    fun setKeywordNotify(id:Int, bool: Boolean): Boolean{
+        val db = this.writableDatabase
+        val values = ContentValues()
+        if (bool){
+            values.put(COLUMN_KEYWORD_NOTIFY,1)
+        } else {
+            values.put(COLUMN_KEYWORD_NOTIFY,0)
+        }
+        db.update(TABLE_KEYWORDS,values,"$COLUMN_ID = ?",arrayOf(id.toString()))
+        return true
     }
 
     companion object {
@@ -108,6 +124,7 @@ class SqliteDatabase(context: Context) :
 
         private const val COLUMN_ID = "_id"
         private const val COLUMN_KEYWORD_TITLE = "keyword"
+        private const val COLUMN_KEYWORD_NOTIFY = "notify"
 
         private const val USER_ID = "_id"
         private const val COLUMN_USERNAME = "username"

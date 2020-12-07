@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         //Creates appBar at top of screen
         val appBar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.app_bar)
         setSupportActionBar(appBar)
@@ -60,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         //starts news service
         val serviceIntent = Intent(this, NewsService::class.java)
         startService(serviceIntent)
-        //stopService(serviceIntent)
         Log.d("Broadcast actions","Done")
 
         //attaches adapter to tabs and gives titles

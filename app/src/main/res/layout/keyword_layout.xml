@@ -24,4 +24,13 @@
         android:layout_toRightOf="@id/keyword_title"
         android:icon="@drawable/cross_icon"
         android:src="@drawable/cross_icon"/>
+
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        />
 </RelativeLayout>

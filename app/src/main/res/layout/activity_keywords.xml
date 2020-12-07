@@ -46,7 +46,13 @@
             android:text="@string/add"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:textColor="@color/colorText"
+        android:text="@string/notify"/>
     <androidx.recyclerview.widget.RecyclerView class="androidx.recyclerview.widget.RecyclerView"
         android:id="@+id/keyword_recycler_view"
         android:layout_height="match_parent"

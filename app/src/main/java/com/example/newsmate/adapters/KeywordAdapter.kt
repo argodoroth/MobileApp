@@ -1,8 +1,10 @@
 package com.example.newsmate.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +27,7 @@ class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>, priva
         val info = keywordArray[position]
 
         holder.keywordView.text = info.getKeywords()
+        holder.checkView.isChecked = info.getNotifies()
     }
 
     //max size of views to be generated
@@ -58,10 +61,16 @@ class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>, priva
         //assigns values to the views so can be modified
         var keywordView = itemView.findViewById<View>(R.id.keyword_title) as TextView
         var imgView = itemView.findViewById<View>(R.id.cross) as ImageView
-
+        var checkView = itemView.findViewById<CheckBox>(R.id.checkbox)
 
         init {
             imgView.setOnClickListener(this)
+            checkView.setOnClickListener { v: View ->
+                val id = keywordArray[adapterPosition].id
+                val x = mDatabase.setKeywordNotify(id, checkView.isChecked)
+                Log.d("checked", checkView.isChecked.toString())
+                Log.d("updated", x.toString())
+            }
         }
 
         //makes on click function for holder to react to
