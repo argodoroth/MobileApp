@@ -22,7 +22,7 @@
     <string name="newStory">New story available</string>
     <string name="notify">notify?</string>
     <string name="region">region</string>
-
+    <string name="preference_file_key">com.example.newsmate.PREFERENCE_FILE_KEY</string>
     <string-array name ="tabs">
         <item>News</item>
         <item>Saved</item>

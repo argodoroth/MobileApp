@@ -15,10 +15,17 @@ class NewsService : Service() {
         val keywords = mDatabase.listKeywords()
         val keysString = makeSearchString(keywords)
 
-        val broadcastIntent = Intent()
-        broadcastIntent.action = MainActivity.mBroadcastNotifyAction
-        //broadcastIntent.putExtra("Data","data")
-        getArticleForNotify(broadcastIntent, keysString)
+        Thread(Runnable{
+            try {
+                Thread.sleep(10000)
+            } catch (e: InterruptedException){
+                e.printStackTrace()
+            }
+            val broadcastIntent = Intent()
+            broadcastIntent.action = MainActivity.mBroadcastNotifyAction
+            //broadcastIntent.putExtra("Data","data")
+            getArticleForNotify(broadcastIntent, keysString)
+        }).start()
 
 
         return START_STICKY

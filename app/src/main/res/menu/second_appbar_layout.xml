@@ -2,16 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/search_icon"
+        android:id="@+id/action_home"
+        android:icon="@drawable/home_icon"
         app:showAsAction="ifRoom"
         android:title="@string/addKeywords" />
-
-    <item
-        android:id="@+id/action_refresh"
-        android:icon="@drawable/refresh_icon"
-        app:showAsAction="ifRoom"
-        android:title="@string/refresh" />
 
     <item
         android:id="@+id/action_logout"
@@ -22,5 +16,4 @@
         android:id="@+id/action_settings"
         android:title="@string/settings"
         />
-
 </menu>

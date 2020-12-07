@@ -20,6 +20,7 @@ import com.example.newsmate.adapters.ArticleAdapter
 import com.example.newsmate.adapters.TabAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 import com.koushikdutta.ion.Ion
 import org.json.JSONObject
 
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         unregisterReceiver(mReceiver)
     }
 
+    //Method to recieve broadcasts from services, and then make notification
     private val mReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             when (intent.action) {
@@ -93,6 +95,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
     //Creates the option menu by inflating the layout
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate((R.menu.appbar_layout), menu)
@@ -119,6 +123,13 @@ class MainActivity : AppCompatActivity() {
                 val search = makeSearchString(keywords)
                 getNewsArticle(search)
             }
+
+            R.id.action_logout -> {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                FirebaseAuth.getInstance().signOut()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -128,10 +139,14 @@ class MainActivity : AppCompatActivity() {
     //Gets a json object of list of news articles from newsAPI.org
     private fun getNewsArticle(keyString: String){
         var url = ""
+        val sharedPref = this.getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+        val localOnly = sharedPref.getBoolean("local",false)
+        val region = sharedPref.getString("region","gb")
 
         //will do topheadlines search if no keywords
-        if (keyString == "") {
-            url = "https://newsapi.org/v2/top-headlines?country=gb&apiKey=0f08db7fe14342799c6f6ea2be6623fe"
+        if (keyString == "" || localOnly) {
+            url = "https://newsapi.org/v2/top-headlines?country=$region&apiKey=0f08db7fe14342799c6f6ea2be6623fe"
         } else {
             url = "https://newsapi.org/v2/everything?q=$keyString&apiKey=0f08db7fe14342799c6f6ea2be6623fe"
         }
@@ -181,7 +196,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     //URL encodes list of keywords so can be used as a search string
     fun makeSearchString(keywords: MutableList<KeywordModel>): String{
         var searchStr = ""
@@ -208,6 +222,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        //contains some constant values
         private const val not1 = 100
         const val mBroadcastNotifyAction = "com.example.broadcast.notify"
     }

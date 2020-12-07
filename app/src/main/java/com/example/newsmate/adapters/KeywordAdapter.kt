@@ -67,9 +67,7 @@ class KeywordAdapter (private val keywordArray: MutableList<KeywordModel>, priva
             imgView.setOnClickListener(this)
             checkView.setOnClickListener { v: View ->
                 val id = keywordArray[adapterPosition].id
-                val x = mDatabase.setKeywordNotify(id, checkView.isChecked)
-                Log.d("checked", checkView.isChecked.toString())
-                Log.d("updated", x.toString())
+                mDatabase.setKeywordNotify(id, checkView.isChecked)
             }
         }
 
