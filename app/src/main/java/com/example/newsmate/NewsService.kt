@@ -15,15 +15,15 @@ class NewsService : Service() {
         val keywords = mDatabase.listKeywords()
         val keysString = makeSearchString(keywords)
 
+        //Would usually wait a couple of hours, lowered to demonstrate notifications
         Thread(Runnable{
             try {
-                Thread.sleep(10000)
+                Thread.sleep(7000)
             } catch (e: InterruptedException){
                 e.printStackTrace()
             }
             val broadcastIntent = Intent()
             broadcastIntent.action = MainActivity.mBroadcastNotifyAction
-            //broadcastIntent.putExtra("Data","data")
             getArticleForNotify(broadcastIntent, keysString)
         }).start()
 
@@ -40,6 +40,7 @@ class NewsService : Service() {
         Log.d("Broadcast","Service Destroyed")
     }
 
+    //gets an article using Ion and sends through broadcast with intent
     fun getArticleForNotify(intent: Intent, keyString: String){
         var url = ""
         if (keyString == "") {
@@ -64,7 +65,7 @@ class NewsService : Service() {
         }
     }
 
-    //URL encodes list of keywords so can be used as a search string
+    //URL encodes keywords with notification as true
     fun makeSearchString(keywords: MutableList<KeywordModel>): String{
         var searchStr = ""
         if (keywords.size>=1){

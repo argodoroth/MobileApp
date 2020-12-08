@@ -41,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
+        //makes a new account with the register information
         val registerButton = findViewById<Button>(R.id.register_button)
         registerButton.setOnClickListener { view ->
             mAuth.createUserWithEmailAndPassword(

@@ -1,8 +1,7 @@
 package com.example.newsmate
 
     class KeywordModel(val id: Int,var keyword: String, var notify: Boolean) {
-        //var keyword: String? = null
-
+        //getters and setters
         fun getKeywords(): String {
             return keyword.toString()
         }

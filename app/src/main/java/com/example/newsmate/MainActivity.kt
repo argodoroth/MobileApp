@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                 mBroadcastNotifyAction -> {
                     val artTitle = intent.getStringExtra("Title")
                     Log.d("Broadcast2","Recieved")
-                    postNotification(not1,"New story available", artTitle.toString())
+                    postNotification(not1,resources.getString(R.string.newStory), artTitle.toString())
                 }
             }
         }

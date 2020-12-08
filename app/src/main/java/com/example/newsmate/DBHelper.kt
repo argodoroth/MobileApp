@@ -13,8 +13,6 @@ class SqliteDatabase(context: Context) :
     override fun onCreate(db: SQLiteDatabase) {
         val CREATE_KEYWORDS_TABLE =
             "CREATE TABLE $TABLE_KEYWORDS($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_KEYWORD_TITLE TEXT, $COLUMN_KEYWORD_NOTIFY INTEGER)"
-        /*val CREATE_USERS_TABLE =
-            "CREATE TABLE $TABLE_USERS($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_KEYWORD_TITLE TEXT)"*/
         val CREATE_ARTICLES_TABLE =
             "CREATE TABLE $TABLE_ARTICLES($COLUMN_ARTICLE_ID INTEGER PRIMARY KEY, $COLUMN_ARTICLE_TITLE TEXT, $COLUMN_ARTICLE_PUBLISHER TEXT, $COLUMN_ARTICLE_SUMMARY TEXT, $COLUMN_ARTICLE_IMAGE_URL TEXT)"
         db.execSQL(CREATE_ARTICLES_TABLE)
@@ -102,7 +100,7 @@ class SqliteDatabase(context: Context) :
         db.delete(TABLE_ARTICLES, "$COLUMN_ARTICLE_ID = ?", arrayOf(id.toString()))
     }
 
-
+    //Change if keyword will make notifications
     fun setKeywordNotify(id:Int, bool: Boolean): Boolean{
         val db = this.writableDatabase
         val values = ContentValues()
@@ -115,20 +113,16 @@ class SqliteDatabase(context: Context) :
         return true
     }
 
+    //sets up constant for database names
     companion object {
         private const val DATABASE_VERSION = 5
         private const val DATABASE_NAME = "data"
         private const val TABLE_KEYWORDS = "keywords"
-        private const val TABLE_USERS = "users"
         private const val TABLE_ARTICLES = "articles"
 
         private const val COLUMN_ID = "_id"
         private const val COLUMN_KEYWORD_TITLE = "keyword"
         private const val COLUMN_KEYWORD_NOTIFY = "notify"
-
-        private const val USER_ID = "_id"
-        private const val COLUMN_USERNAME = "username"
-        private const val PASSWORD = "password"
 
         private const val COLUMN_ARTICLE_ID = "_id"
         private const val COLUMN_ARTICLE_TITLE = "title"

@@ -33,24 +33,6 @@
         android:layout_height="1dp"
         android:background="@color/colorMasked"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/add_keywords"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:text="@string/addKeywords"
-        android:textSize="30dp"
-        android:textColor="@color/colorText"
-        />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorMasked"/>
-
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/local_news_switch"
         android:layout_width="wrap_content"
